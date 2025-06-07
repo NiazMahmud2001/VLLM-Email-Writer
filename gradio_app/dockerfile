@@ -3,7 +3,7 @@ FROM continuumio/anaconda3:2024.10-1
 COPY . /usr/app/
 WORKDIR /usr/app/
 
-# Install system-level dependencies including CUDA development tools
+# installing sys level depend
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -16,21 +16,17 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
-# Set environment variables to help with compilation
 ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
 ENV CUDA_HOME=/opt/conda
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
-# Upgrade pip
 RUN pip install --upgrade pip
 
-# Install other requirements
 RUN pip install gradio
 RUN pip install requests
 
-# Expose the Flask or app port
 EXPOSE 8710
 
 CMD ["python", "ui.py"]
