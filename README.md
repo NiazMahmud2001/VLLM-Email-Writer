@@ -1,2 +1,2 @@
 Add a <b>.env</b> file in vllm_mdoel folder for HuggingFace login token like : <br>
-key = your token
+keys = your token
