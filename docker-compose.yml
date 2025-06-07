@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  ui_service:
+    build:
+      context: ./gradio_app
+      dockerfile: dockerfile
+    image: saaluiimagep3
+    ports:
+      - "8000:8710"
+    container_name: saaluicontainerp3
+
+  backend_service:
+    build:
+      context: ./vllm_model
+      dockerfile: dockerfile
+    image: saalbackendimagep3
+    ports:
+      - "8010:8709"
+    container_name: saalbackendcontainerp3
+    gpus: all 
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
