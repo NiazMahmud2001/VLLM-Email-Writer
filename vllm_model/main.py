@@ -13,15 +13,14 @@ import os
 
 
 class ModelCall():
-    def __init__(self, llm, temperature: float = 0.65, top_p: float = 0.95, max_tokens: int = 512):
+    def __init__(self, llm, top_p: float = 0.95, max_tokens: int = 512):
         self.llm = llm
-        self.temperature = temperature
         self.top_p = top_p
         self.max_tokens = max_tokens
 
-    def makeQuery(self, query):
+    def makeQuery(self, query, tone:float=0.8, length:int=100):
         self.sampling_params = SamplingParams(
-            temperature=self.temperature,
+            temperature=tone,
             top_p=self.top_p,
             max_tokens=self.max_tokens
         )
@@ -45,9 +44,9 @@ class ModelCall():
                 {
                     "role": "system",
                     "content": (
-                        "You are a helpful email writing assistant. "
-                        "You are going to write an email based on the user's prompt. "
-                        "You will write the email in a professional tone."
+                        "You are a helpful email writing assistant, who writes email based on tone range 0.0 to 1.0"
+                        f"You are going to write an email based on the user's prompt within {length} words"
+                        f"You will write the email in informal to formal-professional tone in range={tone}"
                     )
                 },
                 {
@@ -77,7 +76,8 @@ def create_app(modelName):
 
     class QueryRequest(BaseModel):
         query: str
-        isChat: bool
+        tone: str
+        length: str
 
     @app.get("/")
     def home():
@@ -87,7 +87,10 @@ def create_app(modelName):
     @app.post("/askQuestion/")
     def askQuestion(data: QueryRequest):
         query = data.query
-        llmQNA.makeQuery(query)
+        tone = float(data.tone)/100.0
+        length = int(data.length)
+        
+        llmQNA.makeQuery(query, tone, length)
         answer = llmQNA.retQuery()
         return {"answer": answer}
 
