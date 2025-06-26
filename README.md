@@ -77,19 +77,19 @@ The VLLM Qwen 2.5 0.5B Email Writer is an AI-powered assistant designed to help 
 ```mermaid
 graph TD
     A["Grado Website"]
-    A --> B["Get User-Prompt + Adjust Slider -> EMail 'tone' and 'length'"]
-    B --> C["Initiate Http Post request to Backend"]
+    A --> B["Get User-Prompt + <br>Adjust Slider -> <br>EMail 'tone' and 'length'"]
+    B --> C["Initiate Http Post <br>request to Backend"]
 
     D["Vllm Model"]
-    D --> E["Load the Env Variable and Login HuggingFace-Hub"]
+    D --> E["Load the Env <br>Variable and Login HuggingFace-Hub"]
     E --> F["Empty Cuda Cache"]
-    F --> G["Load and initiate LLM model based on  'System and User' role using Vllm"]
-    G --> H["LaunchFastApi and open POST URL endpoint"]      
-    H --> I["Receive HTTP Post requests from Gradio and Extract Tones and Temparature"]
+    F --> G["Load and initiate LLM <br>model based on  <br>'System and User' role using Vllm"]
+    G --> H["LaunchFastApi and <br>open POST URL endpoint"]      
+    H --> I["Receive HTTP Post requests <br>from Gradio and Extract <br>Tones and Temparature"]
     C --> I
 
-    I --> J["Inference the LLM model with Queries, Tones(Casual to Professional) and length"]
-    J --> K["Send the response to Website"]
+    I --> J["Inference the LLM model <br>with Queries, Tones(Casual to <br>Professional) and length"]
+    J --> K["Send the response <br>to Website"]
     K --> A
 ```
 
