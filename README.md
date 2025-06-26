@@ -88,7 +88,7 @@ graph TD
     H --> I["Receive HTTP Post requests from Gradio and Extract Tones and Temparature"]
     C --> I
 
-    I --> J["Inference the LLM model with Queries, Tones(Casual to Professional) and Temparature"]
+    I --> J["Inference the LLM model with Queries, Tones(Casual to Professional) and length"]
     J --> K["Send the response to Website"]
     K --> A
 ```
