@@ -163,29 +163,19 @@ graph TD
 ```
 ├── class GradioUi                         
 │   ├── 📄 __init__()              
-│   ├── 📄 respond()   
-│   ├── 📄 get_number_of_rated_movies()
-│   ├── 📄 get_Rated_NonRated_Movies()
-│   └── 📄 addNewRating(uid, movID, mov_rating)
+│   ├── 📄 respond(message, history, tone, length)  
+│   └── 📄 launchBot()
 
 ```
 ---
 ## 📝 Project  main.py (backend) class Structure
 ```
-├── class odelCall                         
-│   ├── 📄 __init__()              
-│   ├── 📄 respond()   
-│   ├── 📄 get_number_of_rated_movies()
-│   ├── 📄 get_Rated_NonRated_Movies()
-│   └── 📄 addNewRating(uid, movID, mov_rating)
-│
 ├── class ModelCall                         
 │   ├── 📄 __init__(llm, top_p: float = 0.95, max_tokens: int = 512)             
-│   └── 📄 makeQuery(query, tone:float=0.8, length:int=100):  
+│   └── 📄 makeQuery(query, tone:float=0.8, length:int=100)  
 │   
 ├── def create_app(modelName)
-│
-├── def main() 
+└── def main() 
 ```
 
 ### 🎯 Basic Usage
