@@ -88,9 +88,12 @@ graph TD
     H --> I["Receive HTTP Post requests <br>from Gradio and Extract <br>Tones and Temparature"]
     C --> I
 
-    I --> J["Inference the LLM model <br>with Queries, Tones(Casual to <br>Professional) and length"]
+
+    I --  If request related to <br> writing Email --> J["Inference the LLM model <br>with Queries, Tones(Casual to <br>Professional) and length"]
+    I -- else: create a response to ask user to send <br> request for writing Emails--> K
     J --> K["Send the response <br>to Website"]
     K --> A
+
 ```
 
 ## System Components:
