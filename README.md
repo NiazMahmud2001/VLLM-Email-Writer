@@ -3,8 +3,7 @@
 <div align="center">
   <img src="./readMEFiles/image.png" height="120" width="160"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./readMEFiles/saal.png"  height="120"/>
-  <img src="./readMEFiles/saal.png"  height="120"/>
+  <img src="./readMEFiles/saal.png"  height="10"/>
   <p>
     <strong><u>Project 3:</u>&nbsp;&nbsp;AI-Powered Email Writing Assistant with VLLM & Gradio</strong>
   </p>
